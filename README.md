@@ -6,8 +6,7 @@ Cyber Goals is a full-stack, cyberpunk-styled productivity web application that 
 
 ## 🌐 Live Demo
 
-🚀 [View the App Live](https://your-deployment-url.com)  
-(Replace with your actual deployment URL)
+🚀 we haven't done a live yet, may be in future, as the billing methods are not set in open.ai as well as heroko.
 
 ---
 
