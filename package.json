@@ -1,0 +1,9 @@
+{
+  "name": "cyber-goals-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server/server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  }
+}
