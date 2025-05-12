@@ -6,7 +6,7 @@
     "start": "node server/index.js"
   },
   "engines": {
-    "node": "16.x"
+    "node": "22.x"
   },
   "dependencies": {
     "dotenv": "^16.5.0"
