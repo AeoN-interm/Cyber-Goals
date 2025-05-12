@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server/index.js",
-    "vercel-build": "cd client && npm install && npm run build"
+    "vercel-build": "npm run build"
   },
   "engines": {
     "node": "22.x"
