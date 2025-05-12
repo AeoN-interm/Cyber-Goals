@@ -15,12 +15,12 @@
     ],
     "routes": [
       {
-        "src": "/(.*)",
-        "dest": "/client/build/$1"
-      },
-      {
         "src": "/api/(.*)",
         "dest": "/server/index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/client/build/$1"
       }
     ]
   }

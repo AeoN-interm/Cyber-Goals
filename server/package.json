@@ -16,6 +16,6 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.3",
-    "openai": "^3.2.1"
+    "openai": "^3.3.0"
   }
 }
