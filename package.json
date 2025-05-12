@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "vercel-build": "cd client && npm install && npm run build"
   },
   "engines": {
     "node": "22.x"
   },
   "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.2",
     "dotenv": "^16.5.0"
   }
 }
