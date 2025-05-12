@@ -1,4 +1,4 @@
-const Goal = require('../models/Goal');
+const Goal = require('../models/goal');
 const { Configuration, OpenAIApi } = require("openai");
 
 // ✅ Setup OpenAI correctly for v3.x
