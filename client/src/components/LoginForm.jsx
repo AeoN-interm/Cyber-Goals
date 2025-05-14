@@ -14,9 +14,12 @@ const LoginForm = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send login request to backend
-      const res = await axios.post("http://localhost:5000/api/auth/login", formData);
-      
+      // Use the environment variable for the backend URL
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
+        formData
+      );
+
       // If login is successful, store token and navigate
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);

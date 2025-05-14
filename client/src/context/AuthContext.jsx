@@ -21,7 +21,8 @@ export const AuthProvider = ({ children }) => {
   // Register function to handle user registration
   const register = async (username, password) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", { username, password });
+      const url = `${process.env.REACT_APP_API_URL}/api/auth/register`;
+      const res = await axios.post(url, { username, password });
       console.log("Registration successful:", res.data);
       login(res.data.token); // Store the token and login automatically
       return { success: true, message: "Registration successful." };

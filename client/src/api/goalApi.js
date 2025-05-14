@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api/goals";
+const BASE_URL = `${process.env.REACT_APP_API_URL}/api/goals`;
 
 export const getGoals = async () => {
   const res = await fetch(BASE_URL);
@@ -15,7 +15,7 @@ export const createGoal = async (goal) => {
 };
 
 export const deleteGoal = async (id) => {
-  await fetch(`${BASE_URL}/${id}`, {
+  const res = await fetch(`${BASE_URL}/${id}`, {
     method: "DELETE",
   });
 };

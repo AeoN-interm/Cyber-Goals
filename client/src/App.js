@@ -14,18 +14,17 @@ import { AuthProvider } from "./context/AuthContext";
 const App = () => {
   const [goals, setGoals] = useState([]);
   const [editingGoal, setEditingGoal] = useState(null);
-
-  // ← NEW: track which goal we're asking AI about
   const [selectedGoalId, setSelectedGoalId] = useState(null);
 
-  // Fetch goals from backend
+  // Fetch goals from backend using environment variable
   const fetchGoals = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/goals");
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/goals`);
+      if (!res.ok) throw new Error("Failed to fetch goals");
       const data = await res.json();
       setGoals(data);
     } catch (err) {
-      console.error("❌ Failed to fetch goals:", err);
+      console.error("❌ Failed to fetch goals:", err.message);
     }
   };
 
@@ -34,11 +33,10 @@ const App = () => {
     fetchGoals();
   }, []);
 
-  // ← NEW: whenever the goals array changes (new goal added / deleted),
-  // pick the last one in the list as the "selected" goal for recommendations.
+  // Automatically select the last goal for AI recommendations
   useEffect(() => {
     if (goals.length > 0) {
-      setSelectedGoalId(goals[goals.length - 1]._id);
+      setSelectedGoalId(goals[0]._id);
     }
   }, [goals]);
 
@@ -51,13 +49,11 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-
             <Route
               path="/goals"
               element={
                 <PrivateRoute>
                   <div className="max-w-4xl mx-auto mt-10 px-4 space-y-8">
-                    {/* Goal Form */}
                     <div className="bg-[#1a1a2e] border border-[#00ffe0] rounded-2xl shadow-[0_0_20px_#00ffe0] p-6">
                       <GoalForm
                         refreshGoals={fetchGoals}
@@ -66,7 +62,6 @@ const App = () => {
                       />
                     </div>
 
-                    {/* Goal List */}
                     <div className="bg-[#1a1a2e] border border-[#00ffe0] rounded-2xl shadow-[0_0_20px_#00ffe0] p-6">
                       <GoalList
                         goals={goals}
@@ -75,7 +70,6 @@ const App = () => {
                       />
                     </div>
 
-                    {/* AI Recommendations for the selected goal */}
                     <Recommendations goalId={selectedGoalId} />
                   </div>
                 </PrivateRoute>

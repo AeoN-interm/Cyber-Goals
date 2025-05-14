@@ -1,11 +1,11 @@
-// client/src/components/GoalList.jsx
 import React from 'react';
 import Recommendations from './Recommendations'; // ✅ Make sure this path is correct
 
 export default function GoalList({ goals, onEdit, refreshGoals }) {
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/goals/${id}`, {
+      const url = `${process.env.REACT_APP_API_URL}/api/goals/${id}`;
+      await fetch(url, {
         method: 'DELETE',
       });
       refreshGoals();

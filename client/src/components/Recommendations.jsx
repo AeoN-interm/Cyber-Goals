@@ -1,4 +1,3 @@
-// client/src/components/Recommendations.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -15,7 +14,8 @@ const Recommendations = ({ goalId }) => {
       setError("");
       console.log(`🔗 Fetching recommendations for goal ${goalId}`);
       try {
-        const url = `http://localhost:5000/api/goals/${goalId}/recommendations`;
+        // Updated to use process.env.REACT_APP_API_URL for dynamic API URL
+        const url = `${process.env.REACT_APP_API_URL}/api/goals/${goalId}/recommendations`;
         const res = await axios.get(url);
         console.log("✅ Recommendations response:", res.data);
         setRecs(res.data);
