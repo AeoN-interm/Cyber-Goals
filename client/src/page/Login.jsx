@@ -12,9 +12,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Log the API URL to check if it is loading correctly
+    console.log("API URL:", process.env.REACT_APP_API_URL);
+
+    // Fallback if REACT_APP_API_URL is not defined
+    const apiUrl = process.env.REACT_APP_API_URL || 'https://your-app-name.onrender.com'; // Replace with your Render app URL
+
     // Send login request to backend
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, { // Corrected the URL
+      const res = await fetch(`${apiUrl}/api/auth/login`, { // Using apiUrl here
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
